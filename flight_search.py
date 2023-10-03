@@ -9,7 +9,6 @@ flight_data = DataManager()
 cities = flight_data.get_cities()
 
 class FlightSearch:
-    #This class is responsible for talking to the Flight Search API.
     def get_codes(self):
         codes = []
         header = {
