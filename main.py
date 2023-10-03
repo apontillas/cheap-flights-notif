@@ -3,7 +3,6 @@ from data_manager import DataManager
 from notification_manager import NotificationManager
 from datetime import datetime, timedelta
 
-#This file will need to use the DataManager,FlightSearch, FlightData, NotificationManager classes to achieve the program requirements.
 
 date_now = datetime.now()
 DATE_FROM = date_now.strftime("%d/%m/%Y")
