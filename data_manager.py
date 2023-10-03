@@ -4,7 +4,6 @@ import requests as req
 GET_ENDPOINT = "https://api.sheety.co/9163a1e6406a942c9fff68f9bcf7babc/flightDeals/prices"
 
 class DataManager:
-    #This class is responsible for talking to the Google Sheet.
     def get_cities(self, call_sheety: bool = False) -> list:
         if call_sheety:
             res = req.get(url=GET_ENDPOINT)
