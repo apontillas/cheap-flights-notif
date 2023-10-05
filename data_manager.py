@@ -1,16 +1,18 @@
 import requests as req
+import os
 
 
-GET_ENDPOINT = "https://api.sheety.co/3c438d2e7b1a74f53805fda64cb0e402/flightDeals/prices"
+GET_ENDPOINT = "https://api.sheety.co/3c438d2e7b1a74f53805fda64cb0e402/flightDeals"
+sheety_auth = os.environ['SHEETY_AUTH']
 
 header = {
-    'Authorization': 'Bearer FRTRYUJaaderet351t547568h'
+    'Authorization': sheety_auth,
 }
 
 class DataManager:
     def get_cities(self, call_sheety: bool = False) -> list:
         if call_sheety:
-            res = req.get(url=GET_ENDPOINT)
+            res = req.get(url=f"{GET_ENDPOINT}/prices")
             city_data = res.json()['prices']
         else:
             city_data = [{"city": "Paris", "iataCode": "PAR", "lowestPrice": 54, "id": 2},
@@ -36,7 +38,16 @@ class DataManager:
             }
         }
 
-        res = req.put(url=f"{GET_ENDPOINT}/{row}", json=body, headers=header)
+        res = req.put(url=f"{GET_ENDPOINT}/prices/{row}", json=body, headers=header)
         # print(res.text)
+
+    def get_recipients(self, call_sheety: bool = False) -> list:
+        if call_sheety:
+            res = req.get(url=f"{GET_ENDPOINT}/users")
+            users = res.json()['users']
+        else:
+            users = [{"firstName": 'Angely', "lastName": 'Pontillas', "email": 'a@gmail.com'}]
+        return users
+
 
 
