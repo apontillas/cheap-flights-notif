@@ -18,4 +18,4 @@ class NotificationManager:
         )
 
         print(message.status)
-        print(data)
+        # print(data)
